@@ -205,6 +205,7 @@
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script> 
+<script type='text/javascript' src='js/jquery.min.js'></script>
 
 <script type='text/javascript' src='js/fancybox/jquery.fancybox.pack.js'></script>
 
@@ -219,7 +220,6 @@
 
    $(document).ready(function() {
          //alert("OK");
-
          $('#a').addClass('active');
      });
 

@@ -47,3 +47,4 @@ Route::get('signin', function () {
 });
 
 Route::post('registration', 'Registration@addUser');
+Route::post('signin', 'Registration@logIn');
