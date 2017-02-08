@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\models;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+use Illuminate\Database\Eloquent\Model;
+
+class Organization extends Model
 {
-    use Notifiable;
+	
+   //protected $table="organizations";
+	    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +30,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static $rules=['username'=>'required|min:3|max:20|unique:users','email' => 'required|email|max:255|unique:users',
+    public static $rules=['orgshortname'=>'required|min:3|max:10|unique:organizations','email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6'];
+
 }

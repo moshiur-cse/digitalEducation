@@ -6,6 +6,7 @@
 	<meta name="description" content="free-educational-responsive-web-template-webEdu">
 	<meta name="author" content="webThemez.com">
 	<title>Digital Education</title>
+
 	<link rel="favicon" href="images/favicon.png">
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -39,8 +40,19 @@
 						<li><a href="courses">Courses</a></li>
 						<li><a href="price">Price</a></li>
 						<li><a href="videos">Videos</a></li>
+						@if(Auth::User() && Auth::User()->usertype==2)
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<!-- <li><a href="sidebar-right">Right Sidebar</a></li> -->
+								<li><a href="examination">Examination</a></li>
+								<li><a href="#">Dummy Link2</a></li>
+								<li><a href="#">Dummy Link3</a></li>
+							</ul>
+						</li>
+						@else
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Page<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="sidebar-right">Right Sidebar</a></li>
 								<li><a href="#">Dummy Link1</a></li>
@@ -48,8 +60,37 @@
 								<li><a href="#">Dummy Link3</a></li>
 							</ul>
 						</li>
+
+						@endif
+
 						<li><a href="contacts">Contact</a></li>
-						<li><a href="signin">Sign in</a></li>
+
+
+						@if(Auth::User())
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{'Hi, '}}{{Auth::User()->username}}<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="sidebar-right">Right Sidebar</a></li>
+								<li><a href="profile">Profile</a></li>
+								<li><a href="logout">Log out</a></li>
+							</ul>
+						</li>
+
+						@else
+						<li>
+							<a class="page-scroll" href="signin">Sign In</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="usersignup">User</a></li>
+								<li><a href="signuporganization">Organization</a></li>
+							</ul>
+						</li>
+						@endif
+
+
 
 					</ul>
 				</div>
@@ -59,7 +100,7 @@
 
 		<!-- /.navbar -->
 
-@yield('body')
+		@yield('body')
 		<footer id="footer">
 
 			<div class="container">
@@ -206,40 +247,38 @@
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script> 
 <script type='text/javascript' src='js/jquery.min.js'></script>
-
 <script type='text/javascript' src='js/fancybox/jquery.fancybox.pack.js'></script>
-
 <script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
 <script type='text/javascript' src='js/jquery.easing.1.3.js'></script> 
 <script type='text/javascript' src='js/camera.min.js'></script> 
 <script src="js/bootstrap.min.js"></script> 
-
+<script src="js/bootstrap-hover-dropdown.js"></script> 
 <script src="js/custom.js"></script>
 
- <script type="text/javascript">
+<script type="text/javascript">
 
-   $(document).ready(function() {
+	$(document).ready(function() {
          //alert("OK");
          $('#a').addClass('active');
      });
 
-  jQuery(function(){
-   jQuery('#camera_wrap_4').camera({
-    transPeriod: 500,
-    time: 3000,
-    height: '600',
-    loader: 'false',
-    pagination: true,
-    thumbnails: false,
-    hover: false,
-    playPause: false,
-    navigation: false,
-    opacityOnGrid: false,
-    imagePath: 'images/'
-  });
+	jQuery(function(){
+		jQuery('#camera_wrap_4').camera({
+			transPeriod: 500,
+			time: 3000,
+			height: '600',
+			loader: 'false',
+			pagination: true,
+			thumbnails: false,
+			hover: false,
+			playPause: false,
+			navigation: false,
+			opacityOnGrid: false,
+			imagePath: 'images/'
+		});
 
- });
-  
+	});
+
 </script>
 <script type="text/javascript">       
 	function Animate2id(id){ 

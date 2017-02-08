@@ -46,5 +46,46 @@ Route::get('signin', function () {
     return view('digitaleducation.signin');
 });
 
-Route::post('registration', 'Registration@addUser');
-Route::post('signin', 'Registration@logIn');
+Route::post('registration', 'RegistrationController@addUser');
+Route::post('signin', 'RegistrationController@logIn');
+Route::get('logout', 'RegistrationController@logOut');
+
+Route::get('profile', function () {
+
+    return view('digitaleducation.profile');
+});
+
+Route::post('profile', 'RegistrationController@profile');
+
+Route::get('usersignup', function () {
+
+    return view('digitaleducation.usersignup');
+});
+Route::post('usersignup', 'RegistrationController@addUser');
+
+Route::get('signuporganization', function () {
+
+    return view('digitaleducation.signuporganization');
+});
+Route::post('signuporganization', 'RegistrationController@addOrganization');
+
+// Examinatoin 
+/*Route::get('examination', function () {
+
+    return view('digitaleducation.examination');
+});*/
+
+Route::get('examination', 'QuestionController@GetAllSet');
+
+Route::post('questionset', 'QuestionController@addQuestionSet');
+Route::get('addQuestion_{id}', 'QuestionController@AddQuestion');
+
+Route::post('test', 'QuestionController@test');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -45,6 +45,10 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'organization' => [
+        'driver' => 'session',
+        'provider' => 'organization',
+        ],
     ],
 
     /*
@@ -70,10 +74,10 @@ return [
             'model' => App\Http\models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'organization' => [
+        'driver' => 'eloquent',
+        'model' => App\Http\models\Organization::class,
+       ]
     ],
 
     /*
